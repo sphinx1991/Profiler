@@ -1,9 +1,11 @@
-package com.ar.sphinx.profiler;
+package com.ar.sphinx.profiler.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.ar.sphinx.profiler.R;
+
+public class PeopleActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
