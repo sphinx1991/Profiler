@@ -3,8 +3,8 @@ package com.ar.sphinx.profiler.view;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -30,13 +30,13 @@ public class PeopleActivity extends AppCompatActivity {
 
 	private void setupListView(RecyclerView rView) {
 		PeopleAdapter adapter = new PeopleAdapter();
-		rView.setAdapter(adapter);
+//		rView.setAdapter(adapter);
 		rView.setLayoutManager(new LinearLayoutManager(this));
 	}
 
 	private void initDataBinding() {
 		activityPeopleBinding = DataBindingUtil.setContentView(this,R.layout.activity_people);
-		peopleViewModel = new PeopleViewModel();
+		peopleViewModel = new PeopleViewModel(this);
 		activityPeopleBinding.setPeopleViewModel(peopleViewModel);
 	}
 

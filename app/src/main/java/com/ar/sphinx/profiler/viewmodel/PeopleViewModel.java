@@ -26,7 +26,7 @@ public class PeopleViewModel {
 
 	public ObservableInt progressView;
 	public ObservableInt statusView;
-	public ObservableInt recylerView;
+	public ObservableInt recyclerView;
 	public ObservableField<String> messageLabel;
 
 	private List<People> peopleList;
@@ -36,7 +36,7 @@ public class PeopleViewModel {
 	public PeopleViewModel(Context context){
 		this.context = context;
 		this.progressView = new ObservableInt(View.GONE);
-		this.recylerView = new ObservableInt(View.GONE);
+		this.recyclerView = new ObservableInt(View.GONE);
 		this.statusView = new ObservableInt(View.VISIBLE);
 		this.messageLabel = new ObservableField<>("Press + to load the list of people.");
 		peopleList = new ArrayList<>();
@@ -59,14 +59,14 @@ public class PeopleViewModel {
 						peopleList.addAll(peopleResponse.getPeopleList());
 						progressView.set(View.GONE);
 						statusView.set(View.GONE);
-						recylerView.set(View.VISIBLE);
+						recyclerView.set(View.VISIBLE);
 					}
 				}, new Consumer<Throwable>() {
 					@Override public void accept(Throwable throwable) throws Exception {
 						messageLabel.set("There is an error. Oops!!");
 						progressView.set(View.GONE);
 						statusView.set(View.VISIBLE);
-						recylerView.set(View.GONE);
+						recyclerView.set(View.GONE);
 					}
 				});
 
@@ -75,7 +75,7 @@ public class PeopleViewModel {
 
 	private void initializeViews() {
 		progressView.set(View.GONE);
-		recylerView.set(View.GONE);
+		recyclerView.set(View.GONE);
 		statusView.set(View.VISIBLE);
 	}
 

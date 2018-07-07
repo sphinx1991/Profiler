@@ -38,13 +38,16 @@
                 android:id="@+id/pBar_people"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:visibility="@{peopleViewModel.progressView}"/>
 
             <TextView
                 android:id="@+id/tv_people_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center" />
+                android:gravity="center"
+                android:visibility="@{peopleViewModel.statusView}"
+                android:text="@{peopleViewModel.messageLabel}"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rView"
@@ -52,7 +55,9 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:padding="10dp"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:visibility="@{peopleViewModel.recyclerView}"/>
 
         </LinearLayout>
 
@@ -63,7 +68,8 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="10dp"
             android:background="@color/colorPrimary"
-            android:src="@android:drawable/ic_popup_reminder" />
+            android:src="@android:drawable/ic_popup_reminder"
+            android:onClick="@{() -> peopleViewModel.fabLoadClick()}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

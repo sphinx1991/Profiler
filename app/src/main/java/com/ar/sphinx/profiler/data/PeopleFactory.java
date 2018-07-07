@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PeopleFactory {
 
 
-	private final static String BASE_URL = "http://api.randomuser.me/";
-	private final static String PROJECT_URL = "http://api.randomuser.me/";
+	public final static String BASE_URL = "http://api.randomuser.me/";
+	public final static String PROJECT_URL = "http://api.randomuser.me/";
 	public final static String RANDOM_USER_URL = "http://api.randomuser.me/?results=10&nat=en";
 
 	public static PeopleService create(){
