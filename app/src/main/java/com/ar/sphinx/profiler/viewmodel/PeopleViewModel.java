@@ -22,7 +22,7 @@ import io.reactivex.functions.Consumer;
 /**
  * Created by sphinx on 18/06/18.
  */
-public class PeopleViewModel {
+public class PeopleViewModel extends java.util.Observable {
 
 	public ObservableInt progressView;
 	public ObservableInt statusView;
@@ -93,5 +93,11 @@ public class PeopleViewModel {
 		unSubscribeFromObservable();
 		compositeDisposable = null;
 		context = null;
+	}
+
+	public void changePeopleListDataSet(List<People> list){
+		peopleList.addAll(list);
+		setChanged();
+		notifyObservers();
 	}
 }

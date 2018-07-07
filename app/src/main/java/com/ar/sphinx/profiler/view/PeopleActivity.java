@@ -14,7 +14,10 @@ import com.ar.sphinx.profiler.data.PeopleFactory;
 import com.ar.sphinx.profiler.databinding.ActivityPeopleBinding;
 import com.ar.sphinx.profiler.viewmodel.PeopleViewModel;
 
-public class PeopleActivity extends AppCompatActivity {
+import java.util.Observable;
+import java.util.Observer;
+
+public class PeopleActivity extends AppCompatActivity implements Observer{
 
 	private ActivityPeopleBinding activityPeopleBinding;
 	private PeopleViewModel peopleViewModel;
@@ -30,7 +33,7 @@ public class PeopleActivity extends AppCompatActivity {
 
 	private void setupListView(RecyclerView rView) {
 		PeopleAdapter adapter = new PeopleAdapter();
-//		rView.setAdapter(adapter);
+		rView.setAdapter(adapter);
 		rView.setLayoutManager(new LinearLayoutManager(this));
 	}
 
@@ -55,5 +58,14 @@ public class PeopleActivity extends AppCompatActivity {
 
 	private void startActivityActionView() {
 		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PeopleFactory.PROJECT_URL)));
+	}
+
+	@Override
+	public void update(Observable observable, Object o) {
+		if(observable instanceof PeopleViewModel){
+			PeopleAdapter adapter = (PeopleAdapter) activityPeopleBinding.rView.getAdapter();
+			PeopleViewModel peopleViewModel = (PeopleViewModel) observable;
+			adapter.setPeopleList(peopleViewModel.getPeopleList());
+		}
 	}
 }
