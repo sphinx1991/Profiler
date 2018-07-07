@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 /**
  * Created by sphinx on 18/06/18.
  */
-public class PeopleDetailViewModel {
+public class    PeopleDetailViewModel {
 	private People people;
 
 	public PeopleDetailViewModel(People people) {

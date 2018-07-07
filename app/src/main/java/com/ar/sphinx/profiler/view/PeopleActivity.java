@@ -29,12 +29,17 @@ public class PeopleActivity extends AppCompatActivity implements Observer{
 		initDataBinding();
 		setSupportActionBar(activityPeopleBinding.toolbar);
 		setupListView(activityPeopleBinding.rView);
+		setupObserver(peopleViewModel);
 	}
 
 	private void setupListView(RecyclerView rView) {
 		PeopleAdapter adapter = new PeopleAdapter();
 		rView.setAdapter(adapter);
 		rView.setLayoutManager(new LinearLayoutManager(this));
+	}
+
+	public void setupObserver(Observable observable) {
+		observable.addObserver(this);
 	}
 
 	private void initDataBinding() {

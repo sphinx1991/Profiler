@@ -3,6 +3,7 @@ package com.ar.sphinx.profiler.viewmodel;
 import android.content.Context;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
+import android.util.Log;
 import android.view.View;
 
 import com.ar.sphinx.profiler.ProfilerApplication;
@@ -56,7 +57,7 @@ public class PeopleViewModel extends java.util.Observable {
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(new Consumer<PeopleResponse>() {
 					@Override public void accept(PeopleResponse peopleResponse) throws Exception {
-						peopleList.addAll(peopleResponse.getPeopleList());
+						changePeopleListDataSet(peopleResponse.getPeopleList());
 						progressView.set(View.GONE);
 						statusView.set(View.GONE);
 						recyclerView.set(View.VISIBLE);
@@ -64,6 +65,7 @@ public class PeopleViewModel extends java.util.Observable {
 				}, new Consumer<Throwable>() {
 					@Override public void accept(Throwable throwable) throws Exception {
 						messageLabel.set("There is an error. Oops!!");
+						Log.d("ERROR",throwable.getMessage());
 						progressView.set(View.GONE);
 						statusView.set(View.VISIBLE);
 						recyclerView.set(View.GONE);
